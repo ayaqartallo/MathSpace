@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri&family=Cairo:wght@200;400&display=swap');
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #f5d6d6;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Amiri', serif;
+    font-family: 'Cairo', sans-serif;
+}
+
+.card {
+    width: 80%;
+    height: 90%;
+    background-color: #fff;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    margin-top: 10%;
+    
+}
+.login-div {
+    width: 50%;
+    height: 100%;
+    float: left;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+}
+.title-div {
+    width: 50%;
+    height: auto;
+    background-color: #FF4433;
+    float: right;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+}
+
+input{
+    text-align: right;
+    padding: 3%;
+    margin: 5%;
+    border: none;
+    background-color: #eee;
+    width: 120%;
+    font-size: 16px;
+}
+input[type="submit"]{
+    width: 100px;
+    height: 30px;
+    margin-top: 15%;
+    background-color: #FF4433;
+    color: #fff;
+    border-radius: 20px;
+    border: 1px solid #FF4433;
+    font-size: 14px;
+    text-align: center;
+}
+input[type="submit"]:hover{
+    background-color: transparent;
+    color: #FF4433;
+    border: 1px solid #FF4433;
+    cursor: pointer;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+p .error{
+    font-size: 11px;
+    color: #FF4433;
+}
