@@ -24,12 +24,10 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     if ($query) {
        // $delete = "DELETE FROM `waiting_users` WHERE `username` = '$uname'";
-        $query1 = mysqli_query($conn, $delete);
-
-        if ($query1) {
-=            header('Location: control_users.php');
+       
+            header('Location: control_users.php');
             exit(); 
-        }
+        
     }
 }
 

@@ -14,7 +14,6 @@ if (!$conn) {
 session_start();
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-   // username and password sent from form 
    
    $myusername = mysqli_real_escape_string($conn,$_POST['username']);
    $mypassword = mysqli_real_escape_string($conn,$_POST['password']); 
@@ -35,15 +34,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
    $secRow = mysqli_fetch_array($secResult, MYSQLI_ASSOC);
    $sec = $secRow['section'];
 
-   // If result matched $myusername and $mypassword, table row must be 1 row
      
    if($count == 1) {
       $_SESSION['login_user'] = $myusername;
       if($myusername=="admin"){
-        header("location: ../admin/index.html");
+        header("location: ../admin/index.php");
       } else {
         if($acceptanceStatus==1){
-            header("Location: ../users/home.php?section=" . urlencode($sec));
+            header("Location: ../users/home.php?section=" . urlencode($sec)."&username=".$myusername);
             exit;
         } else {
             $query = "INSERT INTO waiting_users (username) VALUES ('$myusername')";

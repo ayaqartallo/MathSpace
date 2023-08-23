@@ -12,12 +12,13 @@ if (mysqli_connect_errno()) {
 }
 $count = 0;
 if (isset($_POST['submit'])) {
-    // Retrieve user input from the form
     $question = mysqli_real_escape_string($con, $_POST['question']);
     $option1 = mysqli_real_escape_string($con, $_POST['option1']);
     $option2 = mysqli_real_escape_string($con, $_POST['option2']);
     $option3 = mysqli_real_escape_string($con, $_POST['option3']);
     $option4 = mysqli_real_escape_string($con, $_POST['option4']);
+    $allowAttach = mysqli_real_escape_string($con, $_POST['allowAttach']);
+    
     if (isset($_POST['coroption'])) {
         $coroption = mysqli_real_escape_string($con, $_POST['coroption']);
     } else {
@@ -38,8 +39,14 @@ if (isset($_POST['submit'])) {
         $image = "";
     }
 
+    if (isset($_POST['allowAttach'])) {
+        $attach = "yes";
+    }else{
+        $attach= "no";
+    }
+
     if($count<40){
-        $query = "INSERT INTO questions (question, option1, option2, option3, option4, coroption, section, image) VALUES ('$question', '$option1', '$option2', '$option3', '$option4', '$coroption', '$section','".$image."')";
+        $query = "INSERT INTO questions (question, option1, option2, option3, option4, coroption, section, image, allowAttach) VALUES ('$question', '$option1', '$option2', '$option3', '$option4', '$coroption', '$section','".$image."','$attach')";
         mysqli_query($con, $query);
         $count=$count+1;
     }else{
@@ -55,7 +62,6 @@ if (isset($_POST['submit'])) {
         <title>اضافة اسئلة</title>
         <link rel="stylesheet" href="admin.css">
         <style>
-            /* Form styling */
             #addQuestionForm {
                 background-color: #eee;
                 width: 50%;
@@ -110,7 +116,7 @@ if (isset($_POST['submit'])) {
         <header>
             <ul>
                 <li><a href=""></a></li>
-                <li><a href="./index.html" target="_self">الصفحة الرئيسية</a></li>
+                <li><a href="./index.php" target="_self">الصفحة الرئيسية</a></li>
                 <li><a href="./signup_users.php" target="_self">انشاء حساب للمستخدم</a></li>
                 <li><a href="./control_users.php" target="_self">التحكم بالمستخدمين</a></li>
                 <li><a href="./add_questions.php" target="_self">اضافة اسئلة</a></li>
@@ -141,9 +147,13 @@ if (isset($_POST['submit'])) {
         </select>
         </label>
         <label for="image">ارفاق صورة: <input type="file" name="image" accept="image/*" /></label>
+        <div style="display: flex; flex-direction: row; padding: 2px;">
+            <input type="checkbox" id="allowAttach" name="allowAttach" value="allow attach file">
+            <label for="allowAttach">السماح للمستخدم بارفاق صور/ملفات</label>
+        </div>
         <button type="submit" name="submit">اضافة السؤال</button>
         <button type="button" onclick="deleteData()">حذف جميع الاسئلة</button>
-        <script>
+        <script>        
             function deleteData() {
                 if (confirm("Are you sure you want to delete all data?")) {
                     <?php $count = 0; ?>
