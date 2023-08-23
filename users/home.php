@@ -30,8 +30,6 @@ $i=1;
             }
             .circle-container {
                 position: relative;
-                margin-top: 100px;
-                margin-left: 50px;
             }
 
             .circle {
@@ -74,7 +72,11 @@ $i=1;
                     while ($row = mysqli_fetch_assoc($result)) {
                         $questionId = $row['questionId'];
                         ?>
-                        <div class="circle" style="left: <?php echo ($i * 150); ?>px; top: <?php echo ($i % 2 === 0 ? 350 : 150); ?>px;">
+                        <div class="circle" style="left: <?php if($i!==9){
+                             echo ($i * 150); ?>px; top: <?php echo ($i % 2 === 0 ? 300 : 150);
+                        }else{
+                            echo ($i * 50); ?>px; top: <?php echo ($i % 2 === 0 ? 500 : 500);
+                        } ?>px;">
                         <a href="levels.php?questionId=<?php echo $questionId; ?>&username=<?php echo urlencode($uname); ?>" style="font-size: 16px;">
                         <?php
                         echo $i; 
@@ -98,7 +100,11 @@ $i=1;
                     while ($row = mysqli_fetch_assoc($result)) {
                         $questionId = $row['questionId'];
                         ?>
-                        <div class="circle" style="left: <?php echo ($i * 150); ?>px; top: <?php echo ($i % 2 === 0 ? 350 : 150); ?>px;">
+                        <div class="circle" style="left: <?php if($i!==9){
+                             echo ($i * 150); ?>px; top: <?php echo ($i % 2 === 0 ? 300 : 150);
+                        }else{
+                            echo ($i * 50); ?>px; top: <?php echo ($i % 2 === 0 ? 500 : 500);
+                        } ?>px;">
                         <a href="levels.php?questionId=<?php echo $questionId; ?>&username=<?php echo urlencode($uname); ?>" style="font-size: 16px;">
                         <?php
                         echo $i; 
@@ -121,7 +127,11 @@ $i=1;
                     while ($row = mysqli_fetch_assoc($result)) {
                         $questionId = $row['questionId'];
                         ?>
-                        <div class="circle" style="left: <?php echo ($i * 150); ?>px; top: <?php echo ($i % 2 === 0 ? 350 : 150); ?>px;">
+                        <div class="circle" style="left: <?php if($i!==9){
+                             echo ($i * 150); ?>px; top: <?php echo ($i % 2 === 0 ? 300 : 150);
+                        }else{
+                            echo ($i * 50); ?>px; top: <?php echo ($i % 2 === 0 ? 500 : 500);
+                        } ?>px;">
                         <a href="levels.php?questionId=<?php echo $questionId; ?>&username=<?php echo urlencode($uname); ?>">
                         <?php
                         echo $i; 
@@ -144,7 +154,11 @@ $i=1;
                     while ($row = mysqli_fetch_assoc($result)) {
                         $questionId = $row['questionId'];
                         ?>
-                        <div class="circle" style="left: <?php echo ($i * 150); ?>px; top: <?php echo ($i % 2 === 0 ? 350 : 150); ?>px;">
+                        <div class="circle" style="left: <?php if($i!==9){
+                             echo ($i * 150); ?>px; top: <?php echo ($i % 2 === 0 ? 300 : 150);
+                        }else{
+                            echo ($i * 50); ?>px; top: <?php echo ($i % 2 === 0 ? 500 : 500);
+                        } ?>px;">
                         <a href="levels.php?questionId=<?php echo $questionId; ?>&username=<?php echo urlencode($uname); ?>" style="font-size: 16px;">
                         <?php
                         echo $i; 
