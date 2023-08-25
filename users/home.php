@@ -28,21 +28,7 @@ $i=1;
                 font-family: 'Amiri', serif;
                 font-family: 'Cairo', sans-serif;
             }
-            .circle-container {
-                position: relative;
-            }
-
-            .circle {
-                width: 80px;
-                height: 80px;
-                background-color: #ff3344;
-                border-radius: 50px;
-                color: white;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                position: absolute;
-            }
+        
            a{
             font-weight: bold;
             font-size: 30px !important;
@@ -53,12 +39,53 @@ $i=1;
             left: 0;
             padding: 10px;
             background-color: #333;
-        }
-        .logout-div a {
-            font-size: 14px !important;
-            color: #fff;
-            font-weight: 200;
-        }
+            }
+            .logout-div a {
+                font-size: 14px !important;
+                color: #fff;
+                font-weight: 200;
+            }
+            .circle-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 50px;
+            }
+
+            table {
+                border-collapse: collapse;
+            }
+
+            td {
+                padding: 10px;
+                text-align: center;
+            }
+
+            .circle {
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 16px;
+                margin: 20px; 
+            }
+
+            .circle:nth-child(even) {
+                background-color: #ff3344;
+            }
+
+            .circle:nth-child(odd) {
+                background-color: #00cc66;
+            }
+            .table-container {
+                display: flex;
+                justify-content: center;
+                margin-top: 50px;
+            }
+
     </style>
     </head>
     <body>
@@ -69,28 +96,39 @@ $i=1;
                 $result = mysqli_query($conn, $sql);
                 
                 if ($result) {
+                    echo '<div class="table-container">';
+                    echo '<table>';
                     while ($row = mysqli_fetch_assoc($result)) {
                         $questionId = $row['questionId'];
+                        
+                        if ($i % 5 === 0) {
+                            echo '<tr>';
+                        }
                         ?>
-                        <div class="circle" style="left: <?php if($i!==9){
-                             echo ($i * 150); ?>px; top: <?php echo ($i % 2 === 0 ? 300 : 150);
-                        }else{
-                            echo ($i * 50); ?>px; top: <?php echo ($i % 2 === 0 ? 500 : 500);
-                        } ?>px;">
-                        <a href="levels.php?questionId=<?php echo $questionId; ?>&username=<?php echo urlencode($uname); ?>" style="font-size: 16px;">
+                        <td>
+                            <div class="circle" style="background-color: <?php echo ($i % 2 === 0 ? '#ff3344' : '#00cc66'); ?>;">
+                                <a href="levels.php?questionId=<?php echo $questionId; ?>&username=<?php echo urlencode($uname); ?>" style="font-size: 16px;">
+                                <?php
+                                echo $i; 
+                                $i++;?>
+                                </a>
+                            </div>
+                        </td>
                         <?php
-                        echo $i; 
-                        $i++;?></a>
-                    </div>
-
-                        </ul>
-                    </form>
-                </div>
-                        <?php
+                        
+                        if ($i % 5 === 0) {
+                            echo '</tr>';
+                        }
                     }
+                    if ($i % 5 !== 0) {
+                        echo '</tr>';
+                    }
+                    echo '</table>';
+                    echo '</div>';
                 } else {
                     echo "Error executing the query: " . mysqli_error($con);
                 }
+                
             
             }elseif($sec==6){
                 $sql = "SELECT * FROM questions WHERE section=6";

@@ -17,7 +17,13 @@ if (isset($_POST['submit'])) {
     $option2 = mysqli_real_escape_string($con, $_POST['option2']);
     $option3 = mysqli_real_escape_string($con, $_POST['option3']);
     $option4 = mysqli_real_escape_string($con, $_POST['option4']);
-    $allowAttach = mysqli_real_escape_string($con, $_POST['allowAttach']);
+    if (isset($_POST['allowAttach'])) {
+        $allowAttach = mysqli_real_escape_string($con, $_POST['allowAttach']);
+        $attach = "yes";
+    } else {
+        $allowAttach = "";
+        $attach = "no";
+    }
     
     if (isset($_POST['coroption'])) {
         $coroption = mysqli_real_escape_string($con, $_POST['coroption']);
@@ -117,9 +123,11 @@ if (isset($_POST['submit'])) {
             <ul>
                 <li><a href=""></a></li>
                 <li><a href="./index.php" target="_self">الصفحة الرئيسية</a></li>
-                <li><a href="./signup_users.php" target="_self">انشاء حساب للمستخدم</a></li>
+                <li><a href="./signup_users.php" target="_self">انشاء حساب مستخدم</a></li>
                 <li><a href="./control_users.php" target="_self">التحكم بالمستخدمين</a></li>
                 <li><a href="./add_questions.php" target="_self">اضافة اسئلة</a></li>
+                <li><a href="./viewUsersInfo.php" target="_self">معلومات الطلاب</a></li>
+                <li><a href="./changePassword.php" target="_self">تغيير كلمة المرور</a></li>
                 <li><a href="../auth/login.php" target="_self">تسجيل الخروج</a></li>
             </ul>
         </header>
@@ -132,10 +140,10 @@ if (isset($_POST['submit'])) {
         <label for="option4">الخيار الرابع: <input type="text" name="option4" id="option4" required></label>
         <label for="coroption">الاجابة الصحيحة: 
         <select name="coroption" id="coroption" required>
-            <option value="option1">الخيار الاول</option>
-            <option value="option2">الخيار الثاني</option>
-            <option value="option3">الخيار الثالث</option>
-            <option value="option4">الخيار الرابع</option>
+            <option value="1">الخيار الاول</option>
+            <option value="2">الخيار الثاني</option>
+            <option value="3">الخيار الثالث</option>
+            <option value="4">الخيار الرابع</option>
         </select>
         </label>
         <label for="forsec">الصف:  

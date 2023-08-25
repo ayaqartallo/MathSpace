@@ -86,12 +86,7 @@ if (mysqli_connect_errno()) {
            <fieldset>
                 <form action="" method="post" >
                     <label for="section">الصف
-                        <select name="section" id="section">
-                            <option value="5">الخامس</option>
-                            <option value="6">السادس</option>
-                            <option value="7">السابع</option>
-                            <option value="8">الثامن</option>
-                        </select>
+                        <input type="text" name="username" id="username" >
                     </label>
                     <button type="submit">بحث</button>
                 </form>
@@ -99,19 +94,20 @@ if (mysqli_connect_errno()) {
             <fieldset>
             <?php
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $selected_section = $_POST['section'];
+                $username = $_POST['username'];
 
-                $sql = "SELECT * FROM questions WHERE section = $selected_section";
+                $sql = "SELECT * FROM users WHERE username LIKE'%$username%'";
 
                 $result = mysqli_query($con, $sql);
 
                 if ($result) {
                     echo '<table>';
-                    echo '<tr><th>رقم السؤال</th><th>السؤال</th></tr>';
+                    echo '<tr><th>الصف:</th><th>العمر:</th><th>عدد النقاط:</th></tr>';
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<tr>';
-                        echo '<td>' . $row['questionId'] . '</td>';
-                        echo '<td><a href="viewUsersSol.php?questionId=' . $row['questionId'] . '">' . $row['question'] . '</a></td>'; 
+                        echo '<td>' . $row['section'] . '</td>';
+                        echo '<td>' . $row['age'] . '</td>';
+                        echo '<td>' . $row['score'] . '</td>';
                         echo '</tr>';
                     }
                     echo '</table>';
@@ -121,6 +117,36 @@ if (mysqli_connect_errno()) {
                 }
             }
             ?>
+            </fieldset>
+          
+            <fieldset>
+            <h4>الأسئلة التي أجاب عليها:</h4>
+                <?php
+                    $sql = "SELECT * FROM user_answers WHERE username LIKE'%$username%'";
+
+                    $result = mysqli_query($con, $sql);
+    
+                    if ($result) {
+                        echo '<table>';
+                        echo '<tr><th>السؤال</th><th>الاجابة:</th></tr>';
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo '<tr>';
+                            $selectedOption = $row['selected_option'];
+                            $qId = $row['questionId'];
+                            $sql1 = "SELECT question FROM questions WHERE questionId = '$qId'";
+                            $result1 = mysqli_query($con, $sql1);
+                            while ($row = mysqli_fetch_assoc($result1)) {
+                            echo '<td>' . $row['question'] . '</td>';
+                            }
+                            echo '<td>' . $selectedOption . '</td>';
+                            echo '</tr>';
+                        }
+                        echo '</table>';
+                        mysqli_free_result($result);
+                    } else {
+                        echo 'Error executing query: ' . mysqli_error($con);
+                    }
+                ?>
             </fieldset>
         </div>
     </body>

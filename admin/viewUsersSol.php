@@ -73,9 +73,11 @@ if (mysqli_connect_errno()) {
             <ul>
                 <li><a href=""></a></li>
                 <li><a href="./index.php" target="_self">الصفحة الرئيسية</a></li>
-                <li><a href="./signup_users.php" target="_self">انشاء حساب للمستخدم</a></li>
+                <li><a href="./signup_users.php" target="_self">انشاء حساب مستخدم</a></li>
                 <li><a href="./control_users.php" target="_self">التحكم بالمستخدمين</a></li>
                 <li><a href="./add_questions.php" target="_self">اضافة اسئلة</a></li>
+                <li><a href="./viewUsersInfo.php" target="_self">معلومات الطلاب</a></li>
+                <li><a href="./changePassword.php" target="_self">تغيير كلمة المرور</a></li>
                 <li><a href="../auth/login.php" target="_self">تسجيل الخروج</a></li>
             </ul>
         </header>
@@ -83,7 +85,7 @@ if (mysqli_connect_errno()) {
             <fieldset>
             <?php
                 $questionId = $_GET['questionId'];
-                $sql = "SELECT * FROM user_answers WHERE question_id = $questionId";
+                $sql = "SELECT * FROM user_answers WHERE questionId = $questionId";
 
                 $result = mysqli_query($con, $sql);
 

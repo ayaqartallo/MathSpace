@@ -13,27 +13,11 @@ if (mysqli_connect_errno()) {
 
 if (isset($_POST['submit'])) {
     // Retrieve user input from the form
-    $username = mysqli_real_escape_string($con, $_POST['username']);
-    $password = mysqli_real_escape_string($con, $_POST['password']);
-    $age = mysqli_real_escape_string($con, $_POST['age']);
-    if (isset($_POST['section'])) {
-        $section = mysqli_real_escape_string($con, $_POST['section']);
-    } else {
-        $section = ""; // Set a default value if 'section' is not set
-    }
-
-    $sql = "SELECT username FROM users WHERE username LIKE'%$username%'";
+    $oldpassword = mysqli_real_escape_string($con, $_POST['oldpassword']);
+    $newpassword = mysqli_real_escape_string($con, $_POST['newpassword']);
+    
+    $sql = "UPDATE users SET password = '$newpassword' WHERE username = 'admin' AND password='$oldpassword'";
     $result = mysqli_query($con,$sql); 
-    if($result){
-        $error = "اسم المستخدم موجود مسبقاً";
-    }else{
-          // SQL query to insert user data into the database
-    $query = "INSERT INTO users (username, password, age, section) VALUES ('$username', '$password', '$age', '$section')";
-    
-    mysqli_query($con, $query);
-    }
-      
-    
     
 }
 
@@ -44,7 +28,7 @@ mysqli_close($con);
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>انشاء حساب للمستخدم</title>
+        <title>تغيير كلمة المرور</title>
         <link rel="stylesheet" href="admin.css">
         <style>
         
@@ -116,19 +100,9 @@ mysqli_close($con);
         <div class="signup-main">
         
             <form action="" method="post" class="signup-form">
-                <label for="username">اسم المستخدم: <input type="text" id="username" name="username" ></label>
-                <label for="password">كلمة المرور:  <input type="password" id="password" name="password" ></label>
-                <label for="age">العمر:  <input type="number" id="age" name="age" ></label>
-                <label for="section">الصف:  
-                    <select id="section" name="section" required>
-                        <option value="5">الخامس</option>
-                        <option value="6">السادس</option>
-                        <option value="7">السابع</option>
-                        <option value="8">الثامن</option>
-
-                    </select>
-                </label>
-                <input type="submit" name="submit" id="submit" value="انشاء حساب" >
+                <label for="oldpassword">كلمة المرور القديمة: <input type="oldpassword" id="oldpassword" name="oldpassword" ></label>
+                <label for="newpassword">كلمة المرور الجديدة:  <input type="newpassword" id="newpassword" name="newpassword" ></label>
+                <input type="submit" name="submit" id="submit" value="تغيير كلمة المرور" >
             </form>
             <?php if (isset($error)) { echo "<p class='error'>$error</p>"; } ?>
             </div>
