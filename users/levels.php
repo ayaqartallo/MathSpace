@@ -65,6 +65,42 @@ if ($result && mysqli_num_rows($result) > 0) {
             font-weight: bold;
             margin-top: 20px;
         }
+        .back-div {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            padding: 10px;
+            background-color: #333;
+            text-align: center;
+        }
+        .back-btn{
+            background-color: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            font-weight: 300;
+        }
+        @media only screen and (max-width: 1000px) {
+            .back-div {
+                right: 0;
+            }
+            .back-btn{
+                font-size: 24px;
+                margin: 15px;
+            }
+            h2{
+                font-size: 34px;
+            }
+            p {
+                font-size: 32px !important;
+            }
+            ul li{
+                font-size: 30px !important;
+            }
+            button[type="submit"] {
+                font-size: 22px;
+            }
+        }
     </style>
     </head>
     <body dir="rtl">
@@ -95,6 +131,9 @@ if ($result && mysqli_num_rows($result) > 0) {
                     <br>
                     <button type="submit" name="submit">ارسال الاجابة</button>
                 </form>
+                <div class="back-div">        
+                <button onclick="history.back()" class="back-btn">الرجوع الى الخلف</button>
+        </div>
             </div>
     </body>
 </html>

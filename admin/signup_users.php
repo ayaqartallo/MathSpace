@@ -91,11 +91,41 @@ mysqli_close($con);
             border: none;
             padding: 10px 20px;
             cursor: pointer;
-            border-radius: 3px;
+            border-radius: 20px;
         }
 
         .signup-form input[type="submit"]:hover {
             background-color: #e52438;
+        }
+        @media only screen and (max-width: 1000px) {
+                body {
+                    font-size: 20px;
+                }
+                ul li a{
+                    margin: 20px 0;
+                }
+                header{
+                    height: 100px;
+                }
+                label{
+                    font-size: 30px;
+                }
+                .signup-form {
+                    width: 500px;
+                }
+                .signup-form input[type="text"],
+                .signup-form input[type="password"],
+                .signup-form input[type="number"],
+                .signup-form select{
+                    font-size: 28px;          
+                }
+                .signup-form select {
+                    height: 54px;
+                }
+                .signup-form input[type="submit"] {
+                    margin-top: 20px;
+                    font-size: 30px;
+                }
         }
     </style>
     </head>

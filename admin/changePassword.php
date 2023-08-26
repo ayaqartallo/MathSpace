@@ -53,10 +53,7 @@ mysqli_close($con);
             text-align: right;
         }
 
-        .signup-form input[type="text"],
-        .signup-form input[type="password"],
-        .signup-form input[type="number"],
-        .signup-form select {
+        .signup-form input[type="password"] {
             width: 100%;
             padding: 8px;
             margin-bottom: 10px;
@@ -65,9 +62,6 @@ mysqli_close($con);
             box-sizing: border-box;
         }
 
-        .signup-form select {
-            height: 34px;
-        }
 
         .signup-form input[type="submit"] {
             background-color: #ff3344;
@@ -75,11 +69,33 @@ mysqli_close($con);
             border: none;
             padding: 10px 20px;
             cursor: pointer;
-            border-radius: 3px;
+            border-radius: 20px;
+
         }
 
         .signup-form input[type="submit"]:hover {
             background-color: #e52438;
+        }
+        @media only screen and (max-width: 1000px) {
+                body {
+                    font-size: 20px;
+                }
+                ul li a{
+                    margin: 20px 0;
+                }
+                header{
+                    height: 100px;
+                }
+                label{
+                    font-size: 26px;
+                }
+                .signup-form {
+                    width: 500px;
+                }
+                .signup-form input[type="submit"]{
+                    font-size: 26px;
+
+                }
         }
     </style>
     </head>
@@ -100,8 +116,8 @@ mysqli_close($con);
         <div class="signup-main">
         
             <form action="" method="post" class="signup-form">
-                <label for="oldpassword">كلمة المرور القديمة: <input type="oldpassword" id="oldpassword" name="oldpassword" ></label>
-                <label for="newpassword">كلمة المرور الجديدة:  <input type="newpassword" id="newpassword" name="newpassword" ></label>
+                <label for="oldpassword">كلمة المرور القديمة: <input type="password" id="oldpassword" name="oldpassword" ></label>
+                <label for="newpassword">كلمة المرور الجديدة:  <input type="password" id="newpassword" name="newpassword" ></label>
                 <input type="submit" name="submit" id="submit" value="تغيير كلمة المرور" >
             </form>
             <?php if (isset($error)) { echo "<p class='error'>$error</p>"; } ?>

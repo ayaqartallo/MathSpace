@@ -10,7 +10,12 @@ if (mysqli_connect_errno()) {
     // If there is an error with the connection, stop the script and display the error.
     exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
+$username = ''; // Initialize the variable outside the POST check to avoid the undefined error
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'];
+    // Rest of your POST handling code
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -67,6 +72,33 @@ if (mysqli_connect_errno()) {
             label{
                 font-weight: bold;
             }
+            @media only screen and (max-width: 1000px) {
+                body {
+                    font-size: 20px;
+                }
+                ul li a{
+                    margin: 20px 0;
+                }
+                header{
+                    height: 100px;
+                }
+                label{
+                    font-size: 30px;
+                }
+                input[type="text"]{
+                    padding: 10px;
+                    font-size: 28px;
+                }
+                button{
+                    font-size: 30px;
+                }
+                th, td{
+                    font-size: 30px;
+                }
+                h4{
+                    font-size: 30px;
+                }
+        }
         </style>
     </head>
     <body dir="rtl">
@@ -115,7 +147,7 @@ if (mysqli_connect_errno()) {
                 } else {
                     echo 'Error executing query: ' . mysqli_error($con);
                 }
-            }
+         
             ?>
             </fieldset>
           
@@ -146,6 +178,7 @@ if (mysqli_connect_errno()) {
                     } else {
                         echo 'Error executing query: ' . mysqli_error($con);
                     }
+                }
                 ?>
             </fieldset>
         </div>

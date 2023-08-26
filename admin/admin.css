@@ -64,15 +64,7 @@ main{
     justify-content: center;
     align-items: center;
 }
-/*.signup-main{
-    margin-top: 5%;
-}
-.signup-form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}*/
+
 label{
     margin: 10px;
     font-size: 16px;

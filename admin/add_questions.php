@@ -115,6 +115,38 @@ if (isset($_POST['submit'])) {
                 margin-bottom: 10px;
                 border-radius: 3px;
             }
+            @media only screen and (max-width: 1000px) {
+                body {
+                    font-size: 20px;
+                }
+                ul li a{
+                    margin: 20px 0;
+                }
+                header{
+                    height: 100px;
+                }
+                #addQuestionForm {
+                    width: 60%;
+                }
+                label{
+                    font-size: 28px;
+                }
+                input[type="text"]{
+                    padding: 15px;
+                    width: 90%
+                }
+                select{
+                    font-size: 24px;
+                }
+                input[type="file"]{
+                    padding: 15px;
+                    font-size: 24px;
+                }
+                button[type="submit"], button[type="button"] {
+                    font-size: 26px;
+                    margin-top: 15px;
+                }
+            }
 
         </style>
     </head>

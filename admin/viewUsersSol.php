@@ -66,6 +66,20 @@ if (mysqli_connect_errno()) {
             label{
                 font-weight: bold;
             }
+            @media only screen and (max-width: 1000px) {
+                body {
+                    font-size: 20px;
+                }
+                ul li a{
+                    margin: 20px 0;
+                }
+                header{
+                    height: 100px;
+                }
+                th, td{
+                    font-size: 30px;
+                }
+        }
         </style>
     </head>
     <body dir="rtl">

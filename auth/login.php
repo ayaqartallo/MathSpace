@@ -62,6 +62,38 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         <meta charset="UTF-8">
         <title>MathSpace</title>
         <link rel="stylesheet" href="styles.css">
+        <style>
+            @media only screen and (max-width: 1000px) {
+                body {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100vh;
+                    margin: 0;
+                    background-color: #f5d6d6;
+                }
+                .card {
+                    flex-direction: column-reverse;
+                    height: auto;
+                }
+
+                .login-div{
+                    width: 80%;
+                    padding: 10%;
+                    
+                    
+                }
+                .title-div{
+                    width: 90%;
+                }
+
+                input {
+                    width: 100%;
+                    padding: 5%;
+                }
+
+            }
+        </style>
     </head>
     <body>
         <div class="card">

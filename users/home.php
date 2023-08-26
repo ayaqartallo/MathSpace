@@ -18,74 +18,109 @@ $i=1;
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>الصفحة الرئيسية</title>
-        <link rel="stylesheet" href="users.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cairo:wght@200;400&display=swap" rel="stylesheet">
-         <style>
-            body{
-                font-family: 'Amiri', serif;
-                font-family: 'Cairo', sans-serif;
-            }
-        
-           a{
+    <meta charset="UTF-8">
+    <title>الصفحة الرئيسية</title>
+    <link rel="stylesheet" href="users.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cairo:wght@200;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Amiri', serif;
+            font-family: 'Cairo', sans-serif;
+            background-image: url("background.gif");
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center; 
+            min-height: 100vh; 
+        }
+
+        a {
             font-weight: bold;
             font-size: 30px !important;
-           }
-           .logout-div {
+            text-decoration: none;
+            color: white;
+        }
+
+        .logout-div {
             position: fixed;
             bottom: 0;
             left: 0;
+            right: 0;
             padding: 10px;
             background-color: #333;
-            }
-            .logout-div a {
-                font-size: 14px !important;
-                color: #fff;
-                font-weight: 200;
-            }
-            .circle-container {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                margin-top: 50px;
-            }
+            text-align: center;
+        }
+
+        .circle-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; 
+            align-items: center;
+         
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            margin: 20px;
+        }
+
+        .table-container {
+            width: 100%;
+        max-width: 800px;
+        overflow: auto;
+        margin: 0 auto; 
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center; 
+        }
+        @media only screen and (max-width: 1000px) {
 
             table {
-                border-collapse: collapse;
+                display: block; 
             }
 
             td {
-                padding: 10px;
-                text-align: center;
+                width: 50%;
+                box-sizing: border-box; 
+                float: left;
             }
-
             .circle {
-                width: 70px;
-                height: 70px;
-                border-radius: 50%;
-                color: white;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 16px;
-                margin: 20px; 
+                width: 150px;
+                height: 150px;
             }
-
-            .circle:nth-child(even) {
-                background-color: #ff3344;
+            .table-container{
+                padding-left: 15%;
             }
-
-            .circle:nth-child(odd) {
-                background-color: #00cc66;
+            a{
+                font-size: 36px !important;
             }
-            .table-container {
-                display: flex;
-                justify-content: center;
-                margin-top: 50px;
-            }
-
+        }
+        
     </style>
     </head>
     <body>
