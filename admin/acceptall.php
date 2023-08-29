@@ -12,7 +12,6 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-
 $sql = "SELECT * FROM waiting_users";
 $result = mysqli_query($conn, $sql);
 
@@ -22,15 +21,18 @@ while ($row = mysqli_fetch_assoc($result)) {
     $update = "UPDATE `users` SET `accept` = 1 WHERE `username` = '$uname'";
     $query = mysqli_query($conn, $update);
 
-    if ($query) {
-       // $delete = "DELETE FROM `waiting_users` WHERE `username` = '$uname'";
-       
-            header('Location: control_users.php');
-            exit(); 
-        
+    if (!$query) {
     }
 }
 
-// Close the database connection
+$delete = "DELETE FROM `waiting_users`";
+$deleteQuery = mysqli_query($conn, $delete);
+
+if (!$deleteQuery) {
+}
+
 mysqli_close($conn);
+
+header('Location: control_users.php');
+exit();
 ?>

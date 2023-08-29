@@ -22,7 +22,7 @@ if($count==1){
             $update = "UPDATE `users` SET `accept`=1 WHERE `username`='".$name."'";
             $query = mysqli_query($conn,$update);
             if ($query) {
-                $delete = "UPDATE `waiting_users` SET `accept`=1 WHERE `username`='".$name."'";
+                $delete = "DELETE FROM `waiting_users` WHERE `username` = '$name'";
                 $query1 = mysqli_query($conn,$delete);
                 if($query1){
                     header('Location: control_users.php');

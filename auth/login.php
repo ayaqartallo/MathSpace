@@ -80,8 +80,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 .login-div{
                     width: 80%;
                     padding: 10%;
-                    
-                    
                 }
                 .title-div{
                     width: 90%;
@@ -90,8 +88,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 input {
                     width: 100%;
                     padding: 5%;
+                    font-size: 28px;
                 }
-
+                h3{
+                    font-size: 32px;
+                }
+                input[type="submit"]{
+                    height: 65px;
+                    font-size: 32px;
+                    width: 300px;
+                }
+                p{
+                    font-size: 28px;
+                }
+                h1{
+                    font-size: 34px;
+                }
             }
         </style>
     </head>

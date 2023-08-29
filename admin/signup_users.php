@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
         $section = ""; // Set a default value if 'section' is not set
     }
 
-    $sql = "SELECT username FROM users WHERE username LIKE'%$username%'";
+    $sql = "SELECT username FROM users WHERE username ='$username'";
     $result = mysqli_query($con,$sql); 
     if($result){
         $error = "اسم المستخدم موجود مسبقاً";
